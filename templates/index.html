@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+{% block title%}
+{{title}}
+{% endblock %}
+
+{% block content %}
+
+<p>Esta es la macro llamada desde index</p>
+
+{% from "_macro.html" import show_list_h %}
+{{ show_list_h(title) }}
+{% from "_macro.html" import render_field %}
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+    <br>
+    <br>
+
+    <form name="sentMessage" id="contactForm" method="POST">
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+               {{ render_field(form.username, class='form-control' ) }}
+                <p class="help-block text-danger"></p>
+            </div>
+
+        </div>
+
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+               {{ render_field(form.email, class='form-control' ) }}
+                <p class="help-block text-danger"></p>
+            </div>
+
+        </div>
+
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+               {{ render_field(form.comment, class='form-control' ) }}
+                <p class="help-block text-danger"></p>
+            </div>
+
+        </div>
+
+        <br>
+        <div id="succes"></div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <button type="submit" class="btn btn-default" style="background-color: darkgrey;">Send</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+
+
+<p>{{ name }}</p>
+
+{% endblock %}
